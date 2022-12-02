@@ -466,7 +466,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 		// set new script
 		mScriptTextField.setText(mScriptModel.getScript(pIndex).getScript());
 		// set last one:
-		mLastSelected = new Integer(pIndex);
+		mLastSelected = Integer.valueOf(pIndex);
 		if (pIndex >= 0 && mScriptList.getSelectedIndex() != pIndex) {
 			mScriptList.setSelectedIndex(pIndex);
 		}

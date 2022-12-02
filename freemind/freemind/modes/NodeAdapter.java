@@ -471,7 +471,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	public String getFontSize() {
 		if (getFont() != null) {
-			return new Integer(getFont().getSize()).toString();
+			return Integer.valueOf(getFont().getSize()).toString();
 		} else {
 			return getMapFeedback().getProperty("defaultfontsize");
 		}

@@ -92,7 +92,7 @@ public class FlatNodeTableFilterModel extends AbstractTableModel {
 						mNoteTextColumn);
 				if (mPattern.matcher(noteContent.toString()).matches()) {
 					// add index to array:
-					newIndexArray.add(new Integer(i));
+					newIndexArray.add(Integer.valueOf(i));
 				}
 			}
 		}

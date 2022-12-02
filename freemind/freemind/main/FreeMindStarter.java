@@ -67,31 +67,8 @@ public class FreeMindStarter {
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		
 		try {
-			java.lang.reflect.Field awtAppClassNameField =
-					xToolkit.getClass().getDeclaredField("awtAppClassName");
-			awtAppClassNameField.setAccessible(true);
-			try {
-				awtAppClassNameField.set(xToolkit, "FreeMind");
-			} catch (java.lang.IllegalAccessException ex) {
-				System.err.println("Could not set window name");
-			}
-		} catch (NoSuchFieldException ex) {
-			// System.err.println("Could not get awtAppClassName");
-		}
-
-		// use reflection to call :
-		// FreeMind.main(args, defaultPreferences, userPreferences,
-		// starter.getUserPreferencesFile(defaultPreferences));
-		try {
-			Class mainClass = Class.forName("freemind.main.FreeMind");
-			Method mainMethod = mainClass.getMethod("main", new Class[] {
-					String[].class, Properties.class, Properties.class,
-					File.class });
-			mainMethod.invoke(null, new Object[] {
-									args,
-									defaultPreferences,
-									userPreferences,
-									starter.getUserPreferencesFile(defaultPreferences) });
+		FreeMind.main(args, defaultPreferences, userPreferences,
+		 starter.getUserPreferencesFile(defaultPreferences));
 
 		} catch (Exception e) {
 			e.printStackTrace();

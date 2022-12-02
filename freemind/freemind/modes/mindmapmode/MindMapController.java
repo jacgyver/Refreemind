@@ -280,8 +280,8 @@ public class MindMapController extends ControllerAdapter implements
 			if (amountOfSelecteds > 1) {
 				nodeStatusLine = Resources.getInstance().format(
 						"node_status_line_several_selected_nodes",
-						new Object[] { new Integer(amountOfSelecteds),
-								new Double(sum) });
+						new Object[] { Integer.valueOf(amountOfSelecteds),
+								Double.valueOf(sum)});
 			} else {
 				MindMapNode sel = (MindMapNode) selecteds.get(0);
 				long amountOfChildren = 0;
@@ -300,7 +300,7 @@ public class MindMapController extends ControllerAdapter implements
 						"node_status_line",
 						new Object[] {
 								sel.getShortText(MindMapController.this),
-								new Integer(sel.getChildCount()),
+								Integer.valueOf(sel.getChildCount()),
 								amountOfChildren });
 			}
 			getFrame().out(nodeStatusLine);

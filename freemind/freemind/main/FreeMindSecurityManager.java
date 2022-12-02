@@ -61,192 +61,196 @@ public final class FreeMindSecurityManager extends SecurityManager {
 		mFinalSecurityManager = pFinalSecurityManager;
 	}
 
+	@Override
 	public void checkAccept(String pHost, int pPort) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkAccept(pHost, pPort);
 	}
 
+		@Override
 	public void checkAccess(Thread pT) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkAccess(pT);
 	}
 
+		@Override
 	public void checkAccess(ThreadGroup pG) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkAccess(pG);
 	}
 
-	public void checkAwtEventQueueAccess() {
-		if (mFinalSecurityManager == null)
-			return;
-		mFinalSecurityManager.checkAwtEventQueueAccess();
-	}
-
+		@Override
 	public void checkConnect(String pHost, int pPort, Object pContext) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkConnect(pHost, pPort, pContext);
 	}
 
+		@Override
 	public void checkConnect(String pHost, int pPort) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkConnect(pHost, pPort);
 	}
 
+		@Override
 	public void checkCreateClassLoader() {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkCreateClassLoader();
 	}
 
+		@Override
 	public void checkDelete(String pFile) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkDelete(pFile);
 	}
 
+		@Override
 	public void checkExec(String pCmd) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkExec(pCmd);
 	}
 
+		@Override
 	public void checkExit(int pStatus) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkExit(pStatus);
 	}
 
+		@Override
 	public void checkLink(String pLib) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkLink(pLib);
 	}
 
+		@Override
 	public void checkListen(int pPort) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkListen(pPort);
 	}
 
-	public void checkMemberAccess(Class arg0, int arg1) {
-		if (mFinalSecurityManager == null)
-			return;
-		mFinalSecurityManager.checkMemberAccess(arg0, arg1);
-	}
-
+		@Override
 	public void checkMulticast(InetAddress pMaddr, byte pTtl) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkMulticast(pMaddr, pTtl);
 	}
 
+		@Override
 	public void checkMulticast(InetAddress pMaddr) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkMulticast(pMaddr);
 	}
 
+		@Override
 	public void checkPackageAccess(String pPkg) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPackageAccess(pPkg);
 	}
 
+		@Override
 	public void checkPackageDefinition(String pPkg) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPackageDefinition(pPkg);
 	}
 
+		@Override
 	public void checkPermission(Permission pPerm, Object pContext) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPermission(pPerm, pContext);
 	}
 
+		@Override
 	public void checkPermission(Permission pPerm) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPermission(pPerm);
 	}
 
+		@Override
 	public void checkPrintJobAccess() {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPrintJobAccess();
 	}
 
+		@Override
 	public void checkPropertiesAccess() {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPropertiesAccess();
 	}
 
+		@Override
 	public void checkPropertyAccess(String pKey) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkPropertyAccess(pKey);
 	}
 
+		@Override
 	public void checkRead(FileDescriptor pFd) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkRead(pFd);
 	}
 
+		@Override
 	public void checkRead(String pFile, Object pContext) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkRead(pFile, pContext);
 	}
 
+		@Override
 	public void checkRead(String pFile) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkRead(pFile);
 	}
 
+		@Override
 	public void checkSecurityAccess(String pTarget) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkSecurityAccess(pTarget);
 	}
 
+		@Override
 	public void checkSetFactory() {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkSetFactory();
 	}
 
-	public void checkSystemClipboardAccess() {
-		if (mFinalSecurityManager == null)
-			return;
-		mFinalSecurityManager.checkSystemClipboardAccess();
-	}
-
-	public boolean checkTopLevelWindow(Object pWindow) {
-		if (mFinalSecurityManager == null)
-			return true;
-		return mFinalSecurityManager.checkTopLevelWindow(pWindow);
-	}
-
+		@Override
 	public void checkWrite(FileDescriptor pFd) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkWrite(pFd);
 	}
 
+		@Override
 	public void checkWrite(String pFile) {
 		if (mFinalSecurityManager == null)
 			return;
 		mFinalSecurityManager.checkWrite(pFile);
 	}
 
+		@Override
 	public Object getSecurityContext() {
 		if (mFinalSecurityManager == null)
 			return super.getSecurityContext();

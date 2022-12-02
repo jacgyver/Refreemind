@@ -67,7 +67,7 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 		protected boolean processAction() throws Exception {
 			Thread.sleep(200);
 			i--;
-			mProgressDescription = new ProgressDescription("Format {0}", new Object[] {new Integer(i)});
+			mProgressDescription = new ProgressDescription("Format {0}", new Object[] {Integer.valueOf(i)});
 			return true;
 		}
 		

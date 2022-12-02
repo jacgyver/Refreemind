@@ -188,7 +188,7 @@ public class ClientCommunication extends CommunicationBase {
 				String mapTitle = Resources.getInstance().format(
 						"MapChooserDialog_title",
 						new Object[] { mSocket.getInetAddress().getHostAddress(),
-								new Integer(mSocket.getPort()) });
+								Integer.valueOf(mSocket.getPort()) });
 	
 				mapChooserDialog.setTitle(mapTitle);
 				mapChooserDialog

@@ -77,7 +77,7 @@ public class NodeUpActor extends XmlActorAdapter {
 							+ parent.getText() + ".");
 					return;
 				}
-				range.add(new Integer(sortedChildren.indexOf(node)));
+				range.add(Integer.valueOf(sortedChildren.indexOf(node)));
 			}
 			// test range for adjacent nodes:
 			Integer last = (Integer) range.iterator().next();

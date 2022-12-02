@@ -216,7 +216,7 @@ public class MindMapMapModel extends MapAdapter {
 				Color color = it.next();
 				colorTableString += "\\red" + color.getRed() + "\\green"
 						+ color.getGreen() + "\\blue" + color.getBlue() + ";";
-				colorTable.put(color, new Integer(colorPosition));
+				colorTable.put(color, Integer.valueOf(colorPosition));
 			}
 			colorTableString += "}";
 
@@ -450,7 +450,7 @@ public class MindMapMapModel extends MapAdapter {
 						new FileReader(semaphoreFile));
 				String lockingUser = semaphoreReader.readLine();
 
-				long lockTime = new Long(semaphoreReader.readLine())
+				long lockTime = Long.valueOf(semaphoreReader.readLine())
 						.longValue();
 				long timeDifference = System.currentTimeMillis() - lockTime;
 				// catch (NumberFormatException enf) {} // This means that the

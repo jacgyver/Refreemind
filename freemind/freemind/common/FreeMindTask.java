@@ -135,7 +135,7 @@ public abstract class FreeMindTask extends Thread {
 				ProgressDescription progressDescription = mProgressDescription;
 				if (mProgressDescription == null) {
 					progressDescription = new ProgressDescription(
-							"FreeMindTask.Default", new Object[] { new Integer(
+							"FreeMindTask.Default", new Object[] { Integer.valueOf(
 									mRounds) });
 				}
 				boolean canceled = mProgressMonitor.showProgress(mRounds,

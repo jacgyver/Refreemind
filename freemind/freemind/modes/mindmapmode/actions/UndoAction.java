@@ -152,7 +152,7 @@ public class UndoAction extends AbstractXmlAction {
 			// and cut vector, if bigger than given size:
 			int maxEntries = 100;
 			try {
-				maxEntries = new Integer(controller.getFrame().getProperty(
+				maxEntries = Integer.valueOf(controller.getFrame().getProperty(
 						"undo_levels")).intValue();
 			} catch (NumberFormatException e) {
 				freemind.main.Resources.getInstance().logException(e);

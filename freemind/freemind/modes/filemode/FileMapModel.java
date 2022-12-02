@@ -197,7 +197,7 @@ public class FileMapModel extends MapAdapter {
 // implements TreeTableModel {
 
 // // The the returned file length for directories.
-// public static final Integer ZERO = new Integer(0);
+// public static final Integer ZERO = Integer.valueOf(0);
 
 // //
 // // Some convenience methods.

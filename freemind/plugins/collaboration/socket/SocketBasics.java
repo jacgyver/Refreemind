@@ -163,7 +163,7 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 						new Object[] { this.getRole(),
 								userInfo.getMasterHostname(),
 								userInfo.getMasterIp(),
-								new Integer(userInfo.getMasterPort()),
+								Integer.valueOf(userInfo.getMasterPort()),
 								userInfo.getUserIds() });
 	}
 

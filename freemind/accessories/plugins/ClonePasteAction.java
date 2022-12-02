@@ -635,7 +635,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 		}
 
 		private void addNodePosition(Vector<Integer> indexVector, MindMapNode child) {
-			indexVector.add(new Integer(child.getParentNode().getChildPosition(
+			indexVector.add(Integer.valueOf(child.getParentNode().getChildPosition(
 					child)));
 		}
 

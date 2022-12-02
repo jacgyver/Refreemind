@@ -54,7 +54,7 @@ public class LastOpenedList {
 	public LastOpenedList(Controller c, String restored) {
 		this.mController = c;
 		try {
-			maxEntries = new Integer(c.getFrame().getProperty(
+			maxEntries = Integer.valueOf(c.getFrame().getProperty(
 					"last_opened_list_length")).intValue();
 		} catch (NumberFormatException e) {
 			freemind.main.Resources.getInstance().logException(e);

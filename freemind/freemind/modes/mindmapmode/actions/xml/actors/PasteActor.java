@@ -703,7 +703,7 @@ public class PasteActor extends XmlActorAdapter {
 					node.setLeft(isLeft);
 					insertNodeInto(node, target);
 					parentNodes.add(node);
-					parentNodesDepths.add(new Integer(depth));
+					parentNodesDepths.add(Integer.valueOf(depth));
 					break;
 				}
 			}

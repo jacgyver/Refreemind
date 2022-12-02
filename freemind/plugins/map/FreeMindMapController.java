@@ -2508,9 +2508,9 @@ public class FreeMindMapController extends JMapController implements
 		double distance = OsmMercator.getDistance(coordinate.getLat(),
 				coordinate.getLon(), cursorPosition.getLat(),
 				cursorPosition.getLon()) / 1000.0;
-		Object[] messageArguments = { new Double(distance),
-				new Double(coordinate.getLat()),
-				new Double(coordinate.getLon()) };
+		Object[] messageArguments = { Double.valueOf(distance),
+				Double.valueOf(coordinate.getLat()),
+				Double.valueOf(coordinate.getLon()) };
 		MessageFormat formatter = new MessageFormat(
 				mMindMapController.getText("plugins/map/MapDialog_Distance"));
 		String message = formatter.format(messageArguments);

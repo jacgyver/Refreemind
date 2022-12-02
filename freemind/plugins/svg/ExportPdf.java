@@ -137,16 +137,16 @@ public class ExportPdf extends ExportVectorGraphic {
 			if (pageFormat.getOrientation() == PageFormat.PORTRAIT) {
 				logger.info("Orientation: Portrait");
 				// portrait
-				retValue.put(PDFTranscoder.KEY_HEIGHT, new Float(pageFormat
+				retValue.put(PDFTranscoder.KEY_HEIGHT, Float.valueOf((float) pageFormat
 						.getPaper().getHeight()));
-				retValue.put(PDFTranscoder.KEY_WIDTH, new Float(pageFormat
+				retValue.put(PDFTranscoder.KEY_WIDTH, Float.valueOf((float) pageFormat
 						.getPaper().getWidth()));
 			} else {
 				logger.info("Orientation: Landscape");
 				// landscape
-				retValue.put(PDFTranscoder.KEY_HEIGHT, new Float(pageFormat
+				retValue.put(PDFTranscoder.KEY_HEIGHT, Float.valueOf((float) pageFormat
 						.getPaper().getWidth()));
-				retValue.put(PDFTranscoder.KEY_WIDTH, new Float(pageFormat
+				retValue.put(PDFTranscoder.KEY_WIDTH, Float.valueOf((float) pageFormat
 						.getPaper().getHeight()));
 			}
 		} else {
@@ -184,9 +184,9 @@ public class ExportPdf extends ExportVectorGraphic {
 		 * maps produce invalid PDF
 		 */
 		pdfTranscoder.addTranscodingHint(PDFTranscoder.KEY_MAX_HEIGHT,
-				new Float(19200));
+				Float.valueOf(19200f));
 		pdfTranscoder.addTranscodingHint(PDFTranscoder.KEY_MAX_WIDTH,
-				new Float(19200));
+				Float.valueOf(19200f));
 		if (pTranscoderHints != null) {
 			for (Key key : pTranscoderHints.keySet()) {
 				pdfTranscoder.addTranscodingHint(key, pTranscoderHints.get(key));

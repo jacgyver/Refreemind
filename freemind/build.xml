@@ -34,8 +34,8 @@
 	<property name="test.reports" location="../bin/reports/" />
 	<property name="post" location="../post" />
 	<property name="debug" value="on" />
-	<property name="java_source_version" value="1.7" />
-	<property name="java_target_version" value="1.7" />
+	<property name="java_source_version" value="11" />
+	<property name="java_target_version" value="11" />
 	<property name="build.compiler" value="modern" />
 	<property name="appbundler.jar" value = "appbundler-1.0.jar"/>
 	<property name="freemind_socket" location="${user.home}/.freemind/freemind.socket"/>
@@ -168,12 +168,6 @@
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
-		</javac>
-		<!-- Starter should work with java 1.1, too as it checks the java version.-->
-		<delete failonerror="false" file="${build}/freemind/main/FreeMindStarter.class">
-		</delete>
-		<javac includeantruntime="false" 	srcdir="${src}" destdir="${build}" classpath="${classpath}"	debug="${debug}" source="1.3" target="1.1">
-			<include name="freemind/main/FreeMindStarter.java"/>
 		</javac>
 		<ant antfile="${acc_build}" target="build"/>
 		<ant antfile="plugins/build.xml" target="build"/>

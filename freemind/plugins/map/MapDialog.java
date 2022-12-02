@@ -278,7 +278,7 @@ public class MapDialog extends MindMapHookAdapter implements
 				if (Double.isInfinite(value) || Double.isNaN(value)) {
 					return Double.valueOf(-1.0);
 				}
-				return new Double(value);
+				return Double.valueOf(value);
 			case SEARCH_DESCRIPTION_COLUMN:
 				return place.getDisplayName();
 			}

@@ -90,8 +90,8 @@ public class StylePattern {
 		nodeBackgroundColor = node.getBackgroundColor();
 		nodeStyle = node.getStyle();
 
-		nodeFontBold = new Boolean(node.isBold());
-		nodeFontItalic = new Boolean(node.isItalic());
+		nodeFontBold = Boolean.valueOf(node.isBold());
+		nodeFontItalic = Boolean.valueOf(node.isItalic());
 		nodeFontSize = node.getFontSize() == null ? null : Integer.valueOf(node
 				.getFontSize());
 		nodeFontFamily = node.getFontFamilyName();
@@ -103,7 +103,7 @@ public class StylePattern {
 
 		edgeColor = node.getEdge().getColor();
 		edgeStyle = node.getEdge().getStyle();
-		edgeWidth = new Integer(node.getEdge().getWidth());
+		edgeWidth = Integer.valueOf(node.getEdge().getWidth());
 
 	}
 
@@ -454,10 +454,10 @@ public class StylePattern {
 				}
 				if (child.getStringAttribute("width") != null) {
 					if (child.getStringAttribute("width").equals("thin")) {
-						setEdgeWidth(new Integer(
+						setEdgeWidth(Integer.valueOf(
 								freemind.modes.EdgeAdapter.WIDTH_THIN));
 					} else {
-						setEdgeWidth(new Integer(Integer.parseInt(child
+						setEdgeWidth(Integer.valueOf(Integer.parseInt(child
 								.getStringAttribute("width"))));
 					}
 				}

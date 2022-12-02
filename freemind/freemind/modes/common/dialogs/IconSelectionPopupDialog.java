@@ -79,7 +79,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 		// we will build a button-matrix which is closest to quadratical
 		numOfIcons = icons.size();
-		xDimension = new Double(Math.ceil(Math.sqrt(numOfIcons))).intValue();
+		xDimension = Double.valueOf(Math.ceil(Math.sqrt(numOfIcons))).intValue();
 		if (numOfIcons <= xDimension * (xDimension - 1))
 			yDimension = xDimension - 1;
 		else

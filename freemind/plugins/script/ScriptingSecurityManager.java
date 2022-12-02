@@ -168,8 +168,8 @@ public class ScriptingSecurityManager extends SecurityManager {
 	private SecurityException getException(int pPermissionGroup, int pPermission) {
 		return new SecurityException(Resources.getInstance().format(
 				"plugins/ScriptEditor.FORBIDDEN_ACTION",
-				new Integer[] { new Integer(pPermissionGroup),
-						new Integer(pPermission) }));
+				new Integer[] { Integer.valueOf(pPermissionGroup),
+						Integer.valueOf(pPermission) }));
 	}
 
 	public void checkAccess(Thread pT) {
