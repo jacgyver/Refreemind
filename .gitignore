@@ -12,6 +12,13 @@ local.properties
 .loadpath
 .recommenders
 
+# IDEs
+.vscode/
+.idea/
+
+# Maven
+target/
+
 # External tool builders
 #.externalToolBuilders/
 
