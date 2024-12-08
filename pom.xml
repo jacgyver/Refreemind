@@ -9,7 +9,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <lombok.version>1.18.26</lombok.version>
-        <kotlin.version>1.8.20</kotlin.version>
+        <kotlin.version>2.1.0</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <detekt.version>1.22.0</detekt.version>
         <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
@@ -191,6 +191,13 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.freemind</groupId>
+            <artifactId>bindings</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/bindings.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>

@@ -916,13 +916,14 @@ public class MindMapController extends ControllerAdapter implements
 			hookActions = new Vector<>();
 			// HOOK TEST
 			MindMapHookFactory factory = (MindMapHookFactory) getHookFactory();
-			List<String> nodeHookNames = factory.getPossibleNodeHooks();
+
+			List<String> nodeHookNames = List.of(); // was: factory.getPossibleNodeHooks();
+			List<String> modeControllerHookNames = List.of(); // was: factory.getPossibleModeControllerHooks();
 			for (String hookName : nodeHookNames) {
 				// create hook action.
 				NodeHookAction action = new NodeHookAction(hookName, this);
 				hookActions.add(action);
 			}
-			List<String> modeControllerHookNames = factory.getPossibleModeControllerHooks();
 			for (String hookName : modeControllerHookNames) {
 				MindMapControllerHookAction action = new MindMapControllerHookAction(hookName, this);
 				hookActions.add(action);
