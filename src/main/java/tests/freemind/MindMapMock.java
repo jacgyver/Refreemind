@@ -29,10 +29,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.swing.event.TreeModelListener;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
+import com.github.d4span.freemind.TreeModelListener;
+import com.github.d4span.freemind.TreeNode;
+import com.github.d4span.freemind.TreePath;
 import freemind.controller.filter.Filter;
 import freemind.controller.filter.util.SortedListModel;
 import freemind.controller.filter.util.SortedMapListModel;
@@ -144,15 +143,15 @@ public class MindMapMock implements MindMap {
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public Object getChild(Object parent, int index) {
 		return null;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public int getChildCount(Object parent) {
 		return 0;
-	}
+	}*/
 
 	@Override
 	public boolean isLeaf(Object node) {

@@ -28,9 +28,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreeNode;
 
+import com.github.d4span.freemind.TreeModel;
+import com.github.d4span.freemind.TreeNode;
 import freemind.controller.filter.Filter;
 import freemind.controller.filter.util.SortedListModel;
 import freemind.main.Tools;

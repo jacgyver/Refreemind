@@ -8,11 +8,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <lombok.version>1.18.26</lombok.version>
         <kotlin.version>2.1.0</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-        <detekt.version>1.22.0</detekt.version>
-        <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
+        <detekt.version>1.23.7</detekt.version>
+        <ktlint-maven-plugin.version>3.4.0</ktlint-maven-plugin.version>
         <kotest.version>5.5.5</kotest.version>
     </properties>
 
@@ -85,11 +84,12 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
-                <extensions>true</extensions> <!-- You can set this option
-            to automatically take information about lifecycles -->
                 <executions>
                     <execution>
                         <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
@@ -99,6 +99,9 @@
                     </execution>
                     <execution>
                         <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
@@ -111,7 +114,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.13.0</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>
