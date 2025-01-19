@@ -110,15 +110,6 @@ public class MindMapMapModel extends MapAdapter {
 				+ getFile().getAbsolutePath();
 	}
 
-	public void changeNode(MindMapNode node, String newText) {
-		if (node.toString().startsWith("<html>")) {
-			node.setUserObject(HtmlTools.unescapeHTMLUnicodeEntity(newText));
-		} else {
-			node.setUserObject(newText);
-		}
-		nodeChanged(node);
-	}
-
 	//
 	// Other methods
 	//

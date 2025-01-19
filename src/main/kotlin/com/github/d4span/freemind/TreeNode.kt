@@ -78,23 +78,9 @@ interface TreeNode {
     fun getIndex(node: TreeNode?): Int
 
     /**
-     * Returns true if the receiver allows children.
-     *
-     * @return              whether the receiver allows children
-     */
-    val allowsChildren: Boolean
-
-    /**
      * Returns true if the receiver is a leaf.
      *
      * @return              whether the receiver is a leaf
      */
     val isLeaf: Boolean
-
-    /**
-     * Returns the children of the receiver as an `Enumeration`.
-     *
-     * @return              the children of the receiver as an `Enumeration`
-     */
-    fun children(): Enumeration<out TreeNode?>?
 }

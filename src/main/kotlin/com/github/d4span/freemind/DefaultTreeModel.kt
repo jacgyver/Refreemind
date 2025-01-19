@@ -90,18 +90,6 @@ open class DefaultTreeModel
     constructor(root: TreeNode?) : this(root, false)
 
     /**
-     * Tells how leaf nodes are determined.
-     *
-     * @return true if only nodes which do not allow children are
-     * leaf nodes, false if nodes which have no children
-     * (even if allowed) are leaf nodes
-     * @see .asksAllowsChildren
-     */
-    fun asksAllowsChildren(): Boolean {
-        return asksAllowsChildren
-    }
-
-    /**
      * Returns the index of child in parent.
      * If either the parent or child is `null`, returns -1.
      * @param parent a note in the tree, obtained from this data source
@@ -112,62 +100,6 @@ open class DefaultTreeModel
     override fun getIndexOfChild(parent: Any?, child: Any?): Int {
         if (parent == null || child == null) return -1
         return (parent as TreeNode).getIndex(child as TreeNode)
-    }
-
-    /**
-     * Returns the child of <I>parent</I> at index <I>index</I> in the parent's
-     * child array.  <I>parent</I> must be a node previously obtained from
-     * this data source. This should not return null if *index*
-     * is a valid index for *parent* (that is *index* &gt;= 0 &amp;&amp;
-     * *index* &lt; getChildCount(*parent*)).
-     *
-     * @param   parent  a node in the tree, obtained from this data source
-     * @return  the child of <I>parent</I> at index <I>index</I>
-     */
-    fun getChild(parent: Any, index: Int): Any? {
-        return (parent as TreeNode).getChildAt(index)
-    }
-
-    /**
-     * Returns the number of children of <I>parent</I>.  Returns 0 if the node
-     * is a leaf or if it has no children.  <I>parent</I> must be a node
-     * previously obtained from this data source.
-     *
-     * @param   parent  a node in the tree, obtained from this data source
-     * @return  the number of children of the node <I>parent</I>
-     */
-    fun getChildCount(parent: Any): Int {
-        return (parent as TreeNode).childCount
-    }
-
-    /**
-     * Returns whether the specified node is a leaf node.
-     * The way the test is performed depends on the
-     * `asksAllowsChildren` setting.
-     *
-     * @param node the node to check
-     * @return true if the node is a leaf node
-     *
-     * @see .asksAllowsChildren
-     *
-     * @see TreeModel.isLeaf
-     */
-    override fun isLeaf(node: Any?): Boolean {
-        if (asksAllowsChildren) return !(node as TreeNode).allowsChildren
-        return (node as TreeNode).isLeaf
-    }
-
-    /**
-     * This sets the user object of the TreeNode identified by path
-     * and posts a node changed.  If you use custom user objects in
-     * the TreeModel you're going to need to subclass this and
-     * set the user object of the changed node to something meaningful.
-     */
-    override fun valueForPathChanged(path: TreePath, newValue: Any?) {
-        val aNode = path.getLastPathComponent() as MutableTreeNode
-
-        aNode.setUserObject(newValue)
-        nodeChanged(aNode)
     }
 
     /**
@@ -215,49 +147,6 @@ open class DefaultTreeModel
     }
 
     /**
-     * Invoke this method after you've changed how node is to be
-     * represented in the tree.
-     *
-     * @param node the changed node
-     */
-    open fun nodeChanged(node: TreeNode?) {
-        if (listenerList != null && node != null) {
-            val parent = node.parent
-
-            if (parent != null) {
-                val anIndex = parent.getIndex(node)
-                if (anIndex != -1) {
-                    val cIndexs = IntArray(1)
-
-                    cIndexs[0] = anIndex
-                    nodesChanged(parent, cIndexs)
-                }
-            } else if (node === root) {
-                nodesChanged(node, null)
-            }
-        }
-    }
-
-    /**
-     * Invoke this method if you've modified the `TreeNode`s upon which
-     * this model depends. The model will notify all of its listeners that the
-     * model has changed below the given node.
-     *
-     * @param node the node below which the model has changed
-     */
-    /**
-     * Invoke this method if you've modified the `TreeNode`s upon which
-     * this model depends. The model will notify all of its listeners that the
-     * model has changed.
-     */
-    @JvmOverloads
-    fun reload(node: TreeNode? = root) {
-        if (node != null) {
-            fireTreeStructureChanged(this, getPathToRoot(node), null, emptyArray())
-        }
-    }
-
-    /**
      * Invoke this method after you've inserted some TreeNodes into
      * node.  childIndices should be the index of the new elements and
      * must be sorted in ascending order.
@@ -297,33 +186,6 @@ open class DefaultTreeModel
                 this, getPathToRoot(node), childIndices,
                 removedChildren
             )
-        }
-    }
-
-    /**
-     * Invoke this method after you've changed how the children identified by
-     * childIndices are to be represented in the tree.
-     *
-     * @param node         changed node
-     * @param childIndices indexes of changed children
-     */
-    fun nodesChanged(node: TreeNode?, childIndices: IntArray?) {
-        if (node != null) {
-            if (childIndices != null) {
-                val cCount = childIndices.size
-
-                if (cCount > 0) {
-                    val cChildren = arrayOfNulls<Any>(cCount)
-
-                    for (counter in 0 until cCount) cChildren[counter] = node.getChildAt(childIndices[counter])
-                    fireTreeNodesChanged(
-                        this, getPathToRoot(node),
-                        childIndices, cChildren
-                    )
-                }
-            } else if (node === root) {
-                fireTreeNodesChanged(this, getPathToRoot(node), null, emptyArray())
-            }
         }
     }
 
@@ -386,49 +248,6 @@ open class DefaultTreeModel
         }
         return retNodes
     }
-
-    //
-    //  Events
-    //
-    /**
-     * Adds a listener for the TreeModelEvent posted after the tree changes.
-     *
-     * @see .removeTreeModelListener
-     *
-     * @param   l       the listener to add
-     */
-    override fun addTreeModelListener(l: TreeModelListener?) {
-        listenerList!!.add<TreeModelListener?>(TreeModelListener::class.java, l)
-    }
-
-    /**
-     * Removes a listener previously added with <B>addTreeModelListener()</B>.
-     *
-     * @see .addTreeModelListener
-     *
-     * @param   l       the listener to remove
-     */
-    override fun removeTreeModelListener(l: TreeModelListener?) {
-        listenerList!!.remove<TreeModelListener?>(TreeModelListener::class.java, l)
-    }
-
-    val treeModelListeners: Array<TreeModelListener?>?
-        /**
-         * Returns an array of all the tree model listeners
-         * registered on this model.
-         *
-         * @return all of this model's `TreeModelListener`s
-         * or an empty
-         * array if no tree model listeners are currently registered
-         *
-         * @see .addTreeModelListener
-         *
-         * @see .removeTreeModelListener
-         *
-         *
-         * @since 1.4
-         */
-        get() = listenerList!!.getListeners<TreeModelListener?>(TreeModelListener::class.java)
 
     /**
      * Notifies all listeners that have registered interest for
@@ -603,86 +422,5 @@ open class DefaultTreeModel
             i -= 2
         }
     }
-
-    /**
-     * Returns an array of all the objects currently registered
-     * as `*Foo*Listener`s
-     * upon this model.
-     * `*Foo*Listener`s are registered using the
-     * `add*Foo*Listener` method.
-     *
-     *
-     *
-     *
-     * You can specify the `listenerType` argument
-     * with a class literal,
-     * such as
-     * `*Foo*Listener.class`.
-     * For example, you can query a
-     * `DefaultTreeModel` `m`
-     * for its tree model listeners with the following code:
-     *
-     * <pre>TreeModelListener[] tmls = (TreeModelListener[])(m.getListeners(TreeModelListener.class));</pre>
-     *
-     * If no such listeners exist, this method returns an empty array.
-     *
-     * @param <T> the listener type
-     * @param listenerType the type of listeners requested
-     * @return an array of all objects registered as
-     * `*Foo*Listener`s on this component,
-     * or an empty array if no such
-     * listeners have been added
-     * @throws ClassCastException if `listenerType`
-     * doesn't specify a class or interface that implements
-     * `java.util.EventListener`
-     *
-     * @see .getTreeModelListeners
-     *
-     *
-     * @since 1.3
-    </T> */
-    fun <T : EventListener?> getListeners(listenerType: Class<T?>?): Array<T?>? {
-        return listenerList!!.getListeners<T?>(listenerType)
-    }
-
-    // Serialization support.
-    @Serial
-    @Throws(IOException::class)
-    private fun writeObject(s: ObjectOutputStream) {
-        val values = Vector<Any?>()
-
-        s.defaultWriteObject()
-        // Save the root, if it's Serializable.
-        if (root is Serializable) {
-            values.addElement("root")
-            values.addElement(root)
-        }
-        s.writeObject(values)
-    }
-
-    @Serial
-    @Throws(IOException::class, ClassNotFoundException::class)
-    private fun readObject(s: ObjectInputStream) {
-        val f = s.readFields()
-        val newListenerList = f.get("listenerList", null) as EventListenerList
-        if (newListenerList == null) {
-            throw InvalidObjectException("Null listenerList")
-        }
-        listenerList = newListenerList
-        asksAllowsChildren = f.get("asksAllowsChildren", false)
-
-        val values = s.readObject() as Vector<*>
-        var indexCounter = 0
-        val maxCounter = values.size
-
-        if (indexCounter < maxCounter && values.elementAt(indexCounter) == "root") {
-            val newRoot = values.elementAt(++indexCounter) as TreeNode
-            if (newRoot == null) {
-                throw InvalidObjectException("Null root")
-            }
-            root = newRoot
-            indexCounter++
-        }
-    }
-} // End of class DefaultTreeModel
+}
 
