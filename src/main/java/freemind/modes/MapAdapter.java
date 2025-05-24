@@ -40,8 +40,8 @@ import javax.swing.event.EventListenerList;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 
-import com.github.d4span.freemind.DefaultTreeModel;
-import com.github.d4span.freemind.TreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import freemind.controller.filter.DefaultFilter;
 import freemind.controller.filter.Filter;
 import freemind.controller.filter.condition.NoFilteringCondition;
@@ -377,7 +377,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	protected void fireTreeNodesInserted(Object source, Object[] path,
 			int[] childIndices, Object[] children) {
 		// Guaranteed to return a non-null array
-		Object[] listeners = getListenerList().getListenerList();
+		Object[] listeners = listenerList.getListenerList();
 		TreeModelEvent e = null;
 		// Process the listeners last to first, notifying
 		// those that are interested in this event
@@ -405,7 +405,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	protected void fireTreeNodesRemoved(Object source, Object[] path,
 			int[] childIndices, Object[] children) {
 		// Guaranteed to return a non-null array
-		Object[] listeners = getListenerList().getListenerList();
+		Object[] listeners = listenerList.getListenerList();
 		TreeModelEvent e = null;
 		// Process the listeners last to first, notifying
 		// those that are interested in this event
@@ -433,7 +433,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	protected void fireTreeStructureChanged(Object source, Object[] path,
 			int[] childIndices, Object[] children) {
 		// Guaranteed to return a non-null array
-		Object[] listeners = getListenerList().getListenerList();
+		Object[] listeners = listenerList.getListenerList();
 		TreeModelEvent e = null;
 		// Process the listeners last to first, notifying
 		// those that are interested in this event
@@ -461,7 +461,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	protected void fireTreeNodesChanged(Object source, Object[] path,
 			int[] childIndices, Object[] children) {
 		// Guaranteed to return a non-null array
-		Object[] listeners = getListenerList().getListenerList();
+		Object[] listeners = listenerList.getListenerList();
 		TreeModelEvent e = null;
 		// Process the listeners last to first, notifying
 		// those that are interested in this event
@@ -530,7 +530,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 
 	/**
 	 * @param pMapIcons
-	 * @param pRootNode
+	 * param pRootNode
 	 */
 	private void addIcons(SortedMapListModel pMapIcons, MindMapNode pNode) {
 		pMapIcons.addAll(pNode.getIcons());

@@ -406,7 +406,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	/**
 	 * @param model 
-	 * @param pFile
+	 * param pFile
 	 * @throws URISyntaxException 
 	 * @throws IOException 
 	 * @throws XMLParseException 

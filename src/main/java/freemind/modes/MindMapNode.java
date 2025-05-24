@@ -35,7 +35,7 @@ import javax.swing.event.EventListenerList;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreePath;
 
-import com.github.d4span.freemind.MutableTreeNode;
+import javax.swing.tree.MutableTreeNode;
 import freemind.controller.filter.FilterInfo;
 import freemind.extensions.NodeHook;
 import freemind.extensions.PermanentNodeHook;
@@ -200,7 +200,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 * object. node.isChild..(parent) == true means: parent -> .. -> node exists
 	 * in the tree.
 	 * 
-	 * @see isDecendantOf
+	 * see isDecendantOf
 	 */
 	boolean isDescendantOfOrEqual(MindMapNode pParentNode);
 
@@ -293,7 +293,7 @@ public interface MindMapNode extends MutableTreeNode {
 	/**
 	 * Removes all hooks from this node.
 	 * 
-	 * @param node
+	 * param node
 	 */
 	public void removeAllHooks();
 
@@ -315,7 +315,7 @@ public interface MindMapNode extends MutableTreeNode {
 	/**
 	 * Is only used to store encrypted content of an encrypted mind map node.
 	 * 
-	 * @see MindMapNode.setAdditionalInfo(String)
+	 * see MindMapNode.setAdditionalInfo(String)
 	 */
 	public String getAdditionalInfo();
 

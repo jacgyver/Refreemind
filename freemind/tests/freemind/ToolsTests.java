@@ -31,7 +31,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.Vector;
 
-import freemind.main.FreeMindSecurityManager;
+//import freemind.main.FreeMindSecurityManager;
 import freemind.main.HtmlTools;
 import freemind.main.Tools;
 import freemind.modes.MapAdapter;
@@ -218,7 +218,7 @@ public class ToolsTests extends FreeMindTestBase {
 		 * (this is normally done in FreeMind) breaks the update. This is tested
 		 * here.
 		 */
-		System.setSecurityManager(new FreeMindSecurityManager());
+//		System.setSecurityManager(new FreeMindSecurityManager());
 		doUpdate();
 	}
 

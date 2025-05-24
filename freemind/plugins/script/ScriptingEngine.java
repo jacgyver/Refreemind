@@ -42,7 +42,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
 import freemind.common.OptionalDontShowMeAgainDialog;
 import freemind.main.FreeMind;
 import freemind.main.FreeMindMain;
-import freemind.main.FreeMindSecurityManager;
+//import freemind.main.FreeMindSecurityManager;
 import freemind.main.Tools;
 import freemind.main.Tools.BooleanHolder;
 import freemind.modes.MindMapNode;
@@ -233,8 +233,8 @@ public class ScriptingEngine extends MindMapHookAdapter {
 		}
 		final ScriptingSecurityManager scriptingSecurityManager = new ScriptingSecurityManager(
 				filePerm, networkPerm, execPerm);
-		final FreeMindSecurityManager securityManager = (FreeMindSecurityManager) System
-				.getSecurityManager();
+//		final FreeMindSecurityManager securityManager = (FreeMindSecurityManager) System
+//				.getSecurityManager();
 
 		CompilerConfiguration compilerConfig = new CompilerConfiguration();
 		compilerConfig

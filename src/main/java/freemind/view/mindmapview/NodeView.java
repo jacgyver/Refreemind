@@ -51,7 +51,7 @@ import javax.swing.ToolTipManager;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 
-import com.github.d4span.freemind.TreeNode;
+import javax.swing.tree.TreeNode;
 import freemind.controller.Controller;
 import freemind.main.FreeMind;
 import freemind.main.FreeMindMain;

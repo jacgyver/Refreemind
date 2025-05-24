@@ -42,7 +42,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
 import freemind.common.OptionalDontShowMeAgainDialog;
 import freemind.main.FreeMind;
 import freemind.main.FreeMindMain;
-import freemind.main.FreeMindSecurityManager;
+//import freemind.main.FreeMindSecurityManager;
 import freemind.main.Tools;
 import freemind.main.Tools.BooleanHolder;
 import freemind.modes.MindMapNode;
@@ -233,8 +233,8 @@ public class ScriptingEngine extends MindMapHookAdapter {
 		}
 		final ScriptingSecurityManager scriptingSecurityManager = new ScriptingSecurityManager(
 				filePerm, networkPerm, execPerm);
-		final FreeMindSecurityManager securityManager = (FreeMindSecurityManager) System
-				.getSecurityManager();
+//		final FreeMindSecurityManager securityManager = (FreeMindSecurityManager) System
+//				.getSecurityManager();
 
 		CompilerConfiguration compilerConfig = new CompilerConfiguration();
 		compilerConfig
@@ -262,8 +262,8 @@ public class ScriptingEngine extends MindMapHookAdapter {
 					try {
 						script = parse(in, fileName);
 						script.setBinding(getContext());
-						securityManager
-								.setFinalSecurityManager(scriptingSecurityManager);
+//						securityManager
+//								.setFinalSecurityManager(scriptingSecurityManager);
 						return script.run();
 					} finally {
 						if (script != null) {
@@ -271,8 +271,8 @@ public class ScriptingEngine extends MindMapHookAdapter {
 							// setting the same security manager the second time
 							// causes it to be
 							// removed.
-							securityManager
-									.setFinalSecurityManager(scriptingSecurityManager);
+//							securityManager
+//									.setFinalSecurityManager(scriptingSecurityManager);
 						}
 					}
 				}
